@@ -109,7 +109,7 @@ export default function Page() {
                     boxShadow: "0 -8px 60px rgba(123,47,190,0.2), 0 0 0 1px rgba(255,255,255,0.05)",
                   }}>
                     <Image
-                      src="/larisa-headshot.jpg"
+                      src="/larisa-full.jpg"
                       alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
                       width={340} height={400}
                       style={{ objectFit: "cover", objectPosition: "top center", width: "100%", height: "100%" }}
