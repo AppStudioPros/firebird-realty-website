@@ -54,14 +54,14 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ background: "var(--slate)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "18px 0" }}>
+      <header style={{ background: "var(--deep)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "18px 0" }}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <span style={{ color: "#fff", fontWeight: 800, fontSize: "1.1rem", letterSpacing: "-0.01em" }}>
-            <span style={{ color: "var(--fire)" }}>Firebird</span> Realty
+            <span style={{ color: "var(--purple)" }}>Firebird</span> Realty
           </span>
           <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
             <a href="tel:5035474507" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.88rem", fontWeight: 500 }}>(503) 547-4507</a>
-            <a href="mailto:larisa@firebirdrealty.net" className="btn-fire" style={{ padding: "9px 20px", fontSize: "0.85rem" }}>
+            <a href="mailto:larisa@firebirdrealty.net" className="btn-purple" style={{ padding: "9px 20px", fontSize: "0.85rem" }}>
               Contact Larisa
             </a>
           </div>
@@ -75,7 +75,7 @@ export default function Page() {
             <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "60px", alignItems: "flex-end" }}>
               <FadeIn delay={0} style={{ paddingBottom: 72 }}>
                 <div className="pulse-badge" style={{ marginBottom: 20 }}>
-                  <span className="tag" style={{ background: "rgba(196,98,58,0.2)", color: "var(--fire-light)" }}>
+                  <span className="tag" style={{ background: "rgba(123,47,190,0.2)", color: "#D4ADFF" }}>
                     Portland Metro, Oregon
                   </span>
                 </div>
@@ -84,13 +84,13 @@ export default function Page() {
                 </div>
                 <h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.03em", fontFamily: "'Playfair Display', serif" }}>
                   Your Buyer&apos;s Advocate<br />
-                  <span style={{ color: "var(--fire-light)" }}>in Portland.</span>
+                  <span style={{ color: "#C084FC" }}>in Portland.</span>
                 </h1>
                 <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: 40, maxWidth: 520 }}>
                   21 years of experience. A genuine specialist in first-time buyers and new Americans. Someone in your corner from the first conversation to the day you get your keys.
                 </p>
                 <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                  <a href="mailto:larisa@firebirdrealty.net" className="btn-fire">
+                  <a href="mailto:larisa@firebirdrealty.net" className="btn-purple">
                     Start Your Home Search <ArrowRight size={16} />
                   </a>
                   <a href="tel:5035474507" className="btn-white">
@@ -106,7 +106,7 @@ export default function Page() {
                     borderRadius: "16px 16px 0 0",
                     overflow: "hidden",
                     border: "3px solid rgba(255,255,255,0.1)",
-                    boxShadow: "0 -8px 60px rgba(196,98,58,0.2), 0 0 0 1px rgba(255,255,255,0.05)",
+                    boxShadow: "0 -8px 60px rgba(123,47,190,0.2), 0 0 0 1px rgba(255,255,255,0.05)",
                   }}>
                     <Image
                       src="/larisa-headshot.jpg"
@@ -132,7 +132,7 @@ export default function Page() {
                   { stat: "MLS Access", label: "Every active listing, every day" },
                 ].map(({ stat, label }) => (
                   <div key={label} className="trust-item">
-                    <p style={{ fontSize: "1.3rem", fontWeight: 800, color: "var(--fire-light)", marginBottom: 4 }}>{stat}</p>
+                    <p style={{ fontSize: "1.3rem", fontWeight: 800, color: "#C084FC", marginBottom: 4 }}>{stat}</p>
                     <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{label}</p>
                   </div>
                 ))}
@@ -145,9 +145,9 @@ export default function Page() {
         <section className="section" style={{ background: "#fff", textAlign: "center" }}>
           <div className="container-narrow">
             <FadeIn>
-              <span className="tag" style={{ background: "rgba(196,98,58,0.1)", color: "var(--fire)" }}>Why work with Larisa</span>
+              <span className="tag" style={{ background: "var(--purple-light)", color: "var(--purple)" }}>Why work with Larisa</span>
               <HeadingUnderline>
-                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--slate)", letterSpacing: "-0.02em" }}>
+                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--deep)", letterSpacing: "-0.02em" }}>
                   A buyer&apos;s agent who actually shows up
                 </h2>
               </HeadingUnderline>
@@ -160,8 +160,8 @@ export default function Page() {
             <div style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left" }}>
               {whyLarisa.map((item, i) => (
                 <FadeIn key={item} delay={i * 60}>
-                  <div style={{ display: "flex", gap: 14, alignItems: "flex-start", background: "var(--cream)", border: "1px solid var(--border)", borderLeft: "4px solid var(--fire)", borderRadius: "0 10px 10px 0", padding: "16px 20px" }}>
-                    <CheckCircle size={18} color="var(--fire)" style={{ flexShrink: 0, marginTop: 2 }} />
+                  <div style={{ display: "flex", gap: 14, alignItems: "flex-start", background: "var(--cream)", border: "1px solid var(--border)", borderLeft: "4px solid var(--purple)", borderRadius: "0 10px 10px 0", padding: "16px 20px" }}>
+                    <CheckCircle size={18} color="var(--purple)" style={{ flexShrink: 0, marginTop: 2 }} />
                     <span style={{ fontSize: "0.97rem", color: "var(--text-dark)", lineHeight: 1.6 }}>{item}</span>
                   </div>
                 </FadeIn>
@@ -176,7 +176,7 @@ export default function Page() {
             <FadeIn>
               <span className="tag" style={{ background: "var(--gold-light)", color: "var(--gold)" }}>The Buying Process</span>
               <HeadingUnderline>
-                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--slate)", letterSpacing: "-0.02em" }}>
+                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--deep)", letterSpacing: "-0.02em" }}>
                   What buying a home with Larisa looks like
                 </h2>
               </HeadingUnderline>
@@ -185,8 +185,8 @@ export default function Page() {
               {buyerSteps.map((step, i) => (
                 <FadeIn key={step.num} delay={i * 80}>
                   <div className="step-card" style={{ height: "100%" }}>
-                    <p style={{ fontSize: "2rem", fontWeight: 900, color: "var(--fire)", opacity: 0.25, marginBottom: 12, letterSpacing: "-0.03em", lineHeight: 1 }}>{step.num}</p>
-                    <p style={{ fontWeight: 800, color: "var(--slate)", marginBottom: 10, fontSize: "1rem" }}>{step.title}</p>
+                    <p style={{ fontSize: "2rem", fontWeight: 900, color: "var(--purple)", opacity: 0.25, marginBottom: 12, letterSpacing: "-0.03em", lineHeight: 1 }}>{step.num}</p>
+                    <p style={{ fontWeight: 800, color: "var(--deep)", marginBottom: 10, fontSize: "1rem" }}>{step.title}</p>
                     <p style={{ fontSize: "0.88rem", color: "var(--text-mid)", lineHeight: 1.75 }}>{step.body}</p>
                   </div>
                 </FadeIn>
@@ -205,8 +205,8 @@ export default function Page() {
                 </div>
               </FadeIn>
               <FadeIn delay={120}>
-                <span className="tag" style={{ background: "rgba(196,98,58,0.1)", color: "var(--fire)" }}>About Larisa</span>
-                <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.3rem)", fontWeight: 800, color: "var(--slate)", marginBottom: 20, letterSpacing: "-0.02em" }}>
+                <span className="tag" style={{ background: "var(--purple-light)", color: "var(--purple)" }}>About Larisa</span>
+                <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.3rem)", fontWeight: 800, color: "var(--deep)", marginBottom: 20, letterSpacing: "-0.02em" }}>
                   21 years. Real expertise.<br />Real results.
                 </h2>
                 <p style={{ fontSize: "1rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 18 }}>
@@ -218,7 +218,7 @@ export default function Page() {
                 <p style={{ fontSize: "1rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 32 }}>
                   She operates through Park Place Real Estate under her own brand, Firebird Realty — a name that reflects her approach. Resilient, tenacious, and always moving forward.
                 </p>
-                <a href="mailto:larisa@firebirdrealty.net" className="btn-fire">
+                <a href="mailto:larisa@firebirdrealty.net" className="btn-purple">
                   Work With Larisa <ArrowRight size={16} />
                 </a>
               </FadeIn>
@@ -230,11 +230,11 @@ export default function Page() {
         <section className="section" style={{ background: "var(--cream)", textAlign: "center" }}>
           <div className="container">
             <FadeIn>
-              <span className="tag" style={{ background: "rgba(196,98,58,0.1)", color: "var(--fire)" }}>The Person Behind the Agent</span>
-              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.3rem)", fontWeight: 800, color: "var(--slate)", marginBottom: 20, letterSpacing: "-0.02em" }}>
+              <span className="tag" style={{ background: "var(--purple-light)", color: "var(--purple)" }}>The Person Behind the Agent</span>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.3rem)", fontWeight: 800, color: "var(--deep)", marginBottom: 20, letterSpacing: "-0.02em" }}>
                 She knows what home means
               </h2>
-              <div style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--fire), var(--gold))", borderRadius: 2, margin: "0 auto 32px" }} />
+              <div style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--purple), var(--gold))", borderRadius: 2, margin: "0 auto 32px" }} />
               <p style={{ fontSize: "1.05rem", color: "var(--text-mid)", lineHeight: 1.9, maxWidth: 640, margin: "0 auto 48px" }}>
                 Home isn&apos;t just square footage and school districts. It&apos;s where life happens. Larisa has bought, designed, and renovated numerous properties over her career — she brings that lived experience to every client relationship.
               </p>
@@ -258,18 +258,18 @@ export default function Page() {
         <section className="section hero-bg" style={{ color: "#fff", textAlign: "center" }}>
           <div className="container-narrow">
             <FadeIn>
-              <span className="tag" style={{ background: "rgba(196,98,58,0.2)", color: "var(--fire-light)" }}>For New Americans</span>
+              <span className="tag" style={{ background: "rgba(123,47,190,0.2)", color: "#D4ADFF" }}>For New Americans</span>
               <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, marginBottom: 20, letterSpacing: "-0.02em", fontFamily: "'Playfair Display', serif" }}>
                 Buying a home in a new country<br />is different. We get that.
               </h2>
-              <div style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--fire-light), var(--gold))", borderRadius: 2, margin: "0 auto 28px" }} />
+              <div style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--purple-bright), var(--gold))", borderRadius: 2, margin: "0 auto 28px" }} />
               <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: 20 }}>
                 The American homebuying process has its own language, its own rules, and its own pace. For someone navigating it in an unfamiliar system — sometimes in an unfamiliar language — it can be overwhelming.
               </p>
               <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.9, marginBottom: 40 }}>
                 Larisa has spent much of her career working with new Americans and immigrant families buying their first home in the U.S. She speaks Russian, she understands the questions people are sometimes afraid to ask, and she has the patience to walk through every step until it makes sense.
               </p>
-              <a href="mailto:larisa@firebirdrealty.net" className="btn-fire">
+              <a href="mailto:larisa@firebirdrealty.net" className="btn-purple">
                 Get in Touch <ArrowRight size={16} />
               </a>
             </FadeIn>
@@ -281,10 +281,10 @@ export default function Page() {
           <div className="container-narrow">
             <FadeIn>
               <p style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: 12 }}>Partner Service</p>
-              <p style={{ fontSize: "1.05rem", color: "var(--slate)", lineHeight: 1.8, marginBottom: 20 }}>
+              <p style={{ fontSize: "1.05rem", color: "var(--deep)", lineHeight: 1.8, marginBottom: 20 }}>
                 Already working with Larisa on buying a home? Her partner Jason Seibel is a licensed mortgage broker with 20+ years of experience who can handle your pre-approval and financing.
               </p>
-              <a href="https://innovativehomeloan.com" target="_blank" rel="noopener noreferrer" className="btn-outline-fire" style={{ fontSize: "0.9rem" }}>
+              <a href="https://innovativehomeloan.com" target="_blank" rel="noopener noreferrer" className="btn-outline-purple" style={{ fontSize: "0.9rem" }}>
                 Innovative Home Loan <ExternalLink size={14} />
               </a>
             </FadeIn>
@@ -295,9 +295,9 @@ export default function Page() {
         <section className="section" style={{ background: "#fff", textAlign: "center" }}>
           <div className="container">
             <FadeIn>
-              <span className="tag" style={{ background: "rgba(196,98,58,0.1)", color: "var(--fire)" }}>Get in Touch</span>
+              <span className="tag" style={{ background: "var(--purple-light)", color: "var(--purple)" }}>Get in Touch</span>
               <HeadingUnderline>
-                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--slate)", letterSpacing: "-0.02em" }}>
+                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--deep)", letterSpacing: "-0.02em" }}>
                   Ready to start your search?
                 </h2>
               </HeadingUnderline>
@@ -315,9 +315,9 @@ export default function Page() {
                   <a href={href} className="card" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, textDecoration: "none", cursor: "pointer" }}
                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                     <div style={{ width: 46, height: 46, borderRadius: 10, background: "rgba(196,98,58,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <Icon size={20} color="var(--fire)" />
+                      <Icon size={20} color="var(--purple)" />
                     </div>
-                    <span style={{ fontWeight: 700, color: "var(--slate)", fontSize: "0.9rem", textAlign: "center" }}>{label}</span>
+                    <span style={{ fontWeight: 700, color: "var(--deep)", fontSize: "0.9rem", textAlign: "center" }}>{label}</span>
                     <span style={{ fontSize: "0.8rem", color: "var(--text-light)" }}>{sub}</span>
                   </a>
                 </FadeIn>
@@ -328,17 +328,17 @@ export default function Page() {
       </main>
 
       {/* ── FOOTER ──────────────────────────────────────────────── */}
-      <footer style={{ background: "var(--slate)", color: "rgba(255,255,255,0.5)", padding: "44px 0", textAlign: "center" }}>
+      <footer style={{ background: "var(--deep)", color: "rgba(255,255,255,0.5)", padding: "44px 0", textAlign: "center" }}>
         <div className="container">
           <p style={{ fontWeight: 800, color: "#fff", marginBottom: 6, fontSize: "1.05rem" }}>
-            <span style={{ color: "var(--fire)" }}>Firebird</span> Realty
+            <span style={{ color: "var(--purple)" }}>Firebird</span> Realty
           </p>
           <p style={{ fontSize: "0.85rem", marginBottom: 6, color: "rgba(255,255,255,0.6)" }}>Larisa Seibel | Licensed Real Estate Agent | Portland Metro, Oregon</p>
           <p style={{ fontSize: "0.82rem", marginBottom: 20, color: "rgba(255,255,255,0.4)" }}>Licensed under Park Place Real Estate</p>
           <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", marginBottom: 20, fontSize: "0.82rem" }}>
             <a href="tel:5035474507" style={{ color: "rgba(255,255,255,0.5)" }}>(503) 547-4507</a>
             <a href="mailto:larisa@firebirdrealty.net" style={{ color: "rgba(255,255,255,0.5)" }}>larisa@firebirdrealty.net</a>
-            <a href="https://innovativehomeloan.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--fire)" }}>Innovative Home Loan</a>
+            <a href="https://innovativehomeloan.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--purple)" }}>Innovative Home Loan</a>
           </div>
           <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.6 }}>
             Equal Housing Opportunity. All information deemed reliable but not guaranteed.<br />
