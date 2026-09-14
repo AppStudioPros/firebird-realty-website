@@ -70,7 +70,7 @@ export default function Page() {
 
       <main>
         {/* ── HERO ────────────────────────────────────────────── */}
-        <section className="hero-bg" style={{ color: "#fff", padding: "96px 0 0" }}>
+        <section className="hero-bg" style={{ color: "#fff", padding: "80px 0 0", position: "relative", overflow: "hidden" }}>
           <div className="container">
             <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "60px", alignItems: "flex-end" }}>
               <FadeIn delay={0} style={{ paddingBottom: 72 }}>
@@ -100,18 +100,18 @@ export default function Page() {
               </FadeIn>
 
               <FadeIn delay={180} direction="none" style={{ alignSelf: "flex-end" }}>
-                <div className="hero-photo-wrap">
+                <div className="hero-photo-wrap" style={{ marginTop: "-80px" }}>
                   <div style={{
-                    width: 340, height: 400,
-                    borderRadius: "16px 16px 0 0",
+                    width: 340,
+                    height: 640,
+                    borderRadius: "14px 14px 0 0",
                     overflow: "hidden",
-                    border: "3px solid rgba(255,255,255,0.1)",
-                    boxShadow: "0 -8px 60px rgba(123,47,190,0.2), 0 0 0 1px rgba(255,255,255,0.05)",
+                    boxShadow: "0 -12px 60px rgba(123,47,190,0.25), 0 0 0 1px rgba(255,255,255,0.08)",
                   }}>
                     <Image
                       src="/larisa-full.jpg"
                       alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
-                      width={340} height={400}
+                      width={340} height={640}
                       style={{ objectFit: "cover", objectPosition: "top center", width: "100%", height: "100%" }}
                       priority
                     />
