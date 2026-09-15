@@ -100,22 +100,18 @@ export default function Page() {
               </FadeIn>
 
               <FadeIn delay={180} direction="none" style={{ alignSelf: "flex-end" }}>
-                <div className="hero-photo-wrap" style={{ marginTop: "-80px" }}>
-                  <div style={{
-                    width: 340,
-                    height: 640,
-                    borderRadius: "14px 14px 0 0",
-                    overflow: "hidden",
-                    boxShadow: "0 -12px 60px rgba(123,47,190,0.25), 0 0 0 1px rgba(255,255,255,0.08)",
-                  }}>
-                    <Image
-                      src="/larisa-full.jpg"
-                      alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
-                      width={340} height={640}
-                      style={{ objectFit: "cover", objectPosition: "top center", width: "100%", height: "100%" }}
-                      priority
-                    />
-                  </div>
+                <div className="hero-photo-wrap">
+                  <Image
+                    src="/larisa-full.jpg"
+                    alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
+                    width={320} height={480}
+                    style={{
+                      display: "block",
+                      borderRadius: "14px 14px 0 0",
+                      boxShadow: "0 -12px 60px rgba(123,47,190,0.25)",
+                    }}
+                    priority
+                  />
                 </div>
               </FadeIn>
             </div>
