@@ -200,7 +200,7 @@ export default function Page() {
             <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
               <FadeIn>
                 <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 60px rgba(30,42,58,0.15)" }}>
-                  <Image src="/larisa-desk.jpg" alt="Larisa Seibel at work" width={480} height={380} style={{ objectFit: "cover", width: "100%", height: 380, display: "block" }} />
+                  <Image src="/larisa-desk.jpg" alt="Larisa Seibel at work" width={480} height={380} style={{ objectFit: "cover", objectPosition: "top center", width: "100%", height: 380, display: "block" }} />
                 </div>
               </FadeIn>
               <FadeIn delay={120}>
