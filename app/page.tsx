@@ -72,7 +72,7 @@ export default function Page() {
         {/* ── HERO ────────────────────────────────────────────── */}
         <section className="hero-bg" style={{ color: "#fff", padding: "80px 0 0", position: "relative", overflow: "hidden" }}>
           <div className="container">
-            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "60px", alignItems: "flex-end" }}>
+            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "60px", alignItems: "flex-end" }}>
               <FadeIn delay={0} style={{ paddingBottom: 72 }}>
                 <div className="pulse-badge" style={{ marginBottom: 20 }}>
                   <span className="tag" style={{ background: "rgba(123,47,190,0.2)", color: "#D4ADFF" }}>
@@ -104,9 +104,12 @@ export default function Page() {
                   <Image
                     src="/larisa-full.jpg"
                     alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
-                    width={320} height={480}
+                    width={700}
+                    height={1049}
                     style={{
                       display: "block",
+                      width: 420,
+                      height: "auto",
                       borderRadius: "14px 14px 0 0",
                       boxShadow: "0 -12px 60px rgba(123,47,190,0.25)",
                     }}
