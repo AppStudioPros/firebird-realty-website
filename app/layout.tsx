@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CookieBanner from "./components/CookieBanner";
+import ChatWidget from "./components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "Firebird Realty | Larisa Seibel — Portland Metro Buyer's Agent",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <CookieBanner />
+        <ChatWidget />
       </body>
     </html>
   );
