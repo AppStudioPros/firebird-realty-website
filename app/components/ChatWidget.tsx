@@ -120,6 +120,7 @@ export default function ChatWidget() {
     const next = [...messages, userMsg]
     setMessages([...next, { role: 'assistant', content: '' }])
     setInput('')
+    setTimeout(() => inputRef.current?.focus(), 50)
     setLoading(true)
 
     try {
