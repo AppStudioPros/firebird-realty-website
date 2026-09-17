@@ -223,7 +223,7 @@ export default function Page() {
             <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
               <FadeIn>
                 <div className="about-photo-glow" style={{ borderRadius: 16, overflow: "hidden", border: "2px solid #7B2FBE" }}>
-                  <Image src="/larisa-about.jpg" alt="Larisa Seibel — Florida Buyer's Agent, Firebird Realty" width={2400} height={1920} className="about-photo" style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: 380, display: "block" }} />
+                  <Image src="/larisa-about.jpg" alt="Larisa Seibel — Florida Buyer's Agent, Firebird Realty" width={2400} height={1920} className="about-photo" priority style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: 380, display: "block" }} />
                 </div>
               </FadeIn>
               <FadeIn delay={120}>
@@ -264,12 +264,12 @@ export default function Page() {
             <div className="family-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 800, margin: "0 auto" }}>
               <FadeIn delay={80}>
                 <div style={{ borderRadius: 14, overflow: "hidden", border: "2px solid #2a0d3e" }}>
-                  <Image src="/larisa-family-1.jpg" alt="Larisa Seibel with family" width={400} height={300} style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
+                  <Image src="/larisa-family-1.jpg" alt="Larisa Seibel with family" width={400} height={300} priority style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
                 </div>
               </FadeIn>
               <FadeIn delay={160}>
                 <div style={{ borderRadius: 14, overflow: "hidden", border: "2px solid #2a0d3e" }}>
-                  <Image src="/larisa-family-2.jpg" alt="Larisa Seibel with family" width={400} height={300} style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
+                  <Image src="/larisa-family-2.jpg" alt="Larisa Seibel with family" width={400} height={300} priority style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
                 </div>
               </FadeIn>
             </div>
