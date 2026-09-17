@@ -9,13 +9,13 @@ function A11yIcon({ size = 28 }: { size?: number }) {
       {/* Outer circle with 3D gradient */}
       <defs>
         <radialGradient id="circleGrad" cx="38%" cy="32%" r="65%">
-          <stop offset="0%" stopColor="#5bc8f5" />
-          <stop offset="55%" stopColor="#1a9de0" />
-          <stop offset="100%" stopColor="#0d6fab" />
+          <stop offset="0%" stopColor="#6b2fa0" />
+          <stop offset="55%" stopColor="#1d092c" />
+          <stop offset="100%" stopColor="#0a0415" />
         </radialGradient>
         <radialGradient id="figureGrad" cx="40%" cy="30%" r="65%">
-          <stop offset="0%" stopColor="#a8dfff" />
-          <stop offset="100%" stopColor="#3ab5f0" />
+          <stop offset="0%" stopColor="#f5c460" />
+          <stop offset="100%" stopColor="#D4891A" />
         </radialGradient>
       </defs>
       {/* Circle ring */}
