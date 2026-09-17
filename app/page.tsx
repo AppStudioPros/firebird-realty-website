@@ -90,7 +90,7 @@ export default function Page() {
             src="/hero-bg-logo.jpg"
             alt=""
             fill
-            style={{ objectFit: "cover", opacity: 0.30, zIndex: 0 }}
+            style={{ objectFit: "cover", opacity: 0.35, zIndex: 0 }}
             aria-hidden="true"
             priority
           />
