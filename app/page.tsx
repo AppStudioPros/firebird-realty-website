@@ -2,18 +2,19 @@ import Image from "next/image";
 import { ExternalLink, Phone, Mail, MapPin, ArrowRight, CheckCircle } from "lucide-react";
 import FadeIn from "./components/FadeIn";
 import HeadingUnderline from "./components/HeadingUnderline";
+import NavMenu from "./components/NavMenu";
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "Larisa Seibel",
   jobTitle: "Licensed Real Estate Agent — Buyer's Specialist",
-  description: "Licensed Portland metro buyer's agent with 21+ years of experience. Specializing in first-time homebuyers, new Americans, and buyers who need a real advocate. Russian-speaking.",
+  description: "Licensed Florida buyer's agent based in Ormond Beach with 21+ years of experience. Specializing in first-time homebuyers, new Americans, and buyers who need a real advocate. Russian-speaking.",
   url: "https://www.firebirdrealty.net",
   telephone: "+15035474507",
   email: "larisa@firebirdrealty.net",
-  address: { "@type": "PostalAddress", addressLocality: "Sherwood", addressRegion: "OR", addressCountry: "US" },
-  areaServed: { "@type": "State", name: "Portland Metro, Oregon" },
+  address: { "@type": "PostalAddress", addressLocality: "Ormond Beach", addressRegion: "FL", addressCountry: "US" },
+  areaServed: { "@type": "State", name: "Central Florida" },
   knowsLanguage: ["English", "Russian"],
   memberOf: { "@type": "Organization", name: "Park Place Real Estate" },
 };
@@ -22,10 +23,10 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed real estate agent with 21+ years of experience based in the Portland, Oregon metro area. She operates under the Firebird Realty brand through Park Place Real Estate and specializes in working with buyers, first-time homebuyers, and new Americans navigating homeownership for the first time." } },
+    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed real estate agent with 21+ years of experience based in Ormond Beach, Florida. She operates under the Firebird Realty brand and specializes in working with buyers, first-time homebuyers, and new Americans navigating homeownership for the first time." } },
     { "@type": "Question", name: "Does Larisa Seibel work with first-time homebuyers?", acceptedAnswer: { "@type": "Answer", text: "Yes. First-time homebuyers are one of Larisa's primary specialties. She walks buyers through every step of the process with patience and clarity, from initial search to closing." } },
-    { "@type": "Question", name: "Does Larisa Seibel speak Russian?", acceptedAnswer: { "@type": "Answer", text: "Yes. Larisa Seibel is bilingual in English and Russian and works with Russian-speaking clients throughout the Portland metro area." } },
-    { "@type": "Question", name: "What areas does Larisa Seibel cover?", acceptedAnswer: { "@type": "Answer", text: "Larisa serves the Portland metro area including Sherwood, Beaverton, Tigard, Lake Oswego, Tualatin, and surrounding communities in Oregon." } },
+    { "@type": "Question", name: "Does Larisa Seibel speak Russian?", acceptedAnswer: { "@type": "Answer", text: "Yes. Larisa Seibel is bilingual in English and Russian and works with Russian-speaking clients throughout Central Florida." } },
+    { "@type": "Question", name: "What areas does Larisa Seibel cover?", acceptedAnswer: { "@type": "Answer", text: "Larisa serves Central Florida within a 100-mile radius of Ormond Beach, including Daytona Beach, Palm Coast, St. Augustine, DeLand, Deltona, Sanford, Orlando, and surrounding communities." } },
   ],
 };
 
@@ -39,7 +40,7 @@ const buyerSteps = [
 ];
 
 const whyLarisa = [
-  "21+ years in Portland real estate — she's seen every market condition",
+  "21+ years in Florida real estate — she's seen every market condition",
   "Bilingual in English and Russian",
   "Artist background — an eye for space, layout, and potential that most agents don't have",
   "Specializes in first-time buyers who need guidance, not pressure",
@@ -54,29 +55,51 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <header style={{ background: "var(--deep)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "18px 0" }}>
+      <header style={{ background: "#1d092c", padding: "12px 0", position: "sticky", top: 0, zIndex: 100 }}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ color: "#fff", fontWeight: 800, fontSize: "1.1rem", letterSpacing: "-0.01em" }}>
-            <span style={{ color: "var(--purple)" }}>Firebird</span> Realty
-          </span>
-          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-            <a href="tel:5035474507" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.88rem", fontWeight: 500 }}>(503) 547-4507</a>
-            <a href="mailto:larisa@firebirdrealty.net" className="btn-purple" style={{ padding: "9px 20px", fontSize: "0.85rem" }}>
+          <a href="#" style={{ display: "block", lineHeight: 0 }}>
+            <Image
+              src="/logo-nav.jpg"
+              alt="Firebird Realty"
+              width={6328}
+              height={2959}
+              style={{ height: 61, width: "auto", display: "block" }}
+              priority
+            />
+          </a>
+          <nav style={{ display: "flex", gap: 20, alignItems: "center" }}>
+            <div className="nav-desktop" style={{ display: "flex", gap: 24, alignItems: "center" }}>
+              <a href="#process" className="nav-link">Process</a>
+              <a href="#about" className="nav-link">About</a>
+              <a href="#contact" className="nav-link">Contact</a>
+              <a href="tel:5035474507" className="nav-link">(503) 547-4507</a>
+            </div>
+            <NavMenu />
+            <a href="mailto:larisa@firebirdrealty.net" className="btn-purple nav-contact-btn" style={{ padding: "9px 20px", fontSize: "0.85rem", width: "auto" }}>
               Contact Larisa
             </a>
-          </div>
+          </nav>
         </div>
       </header>
 
       <main>
         {/* ── HERO ────────────────────────────────────────────── */}
         <section className="hero-bg" style={{ color: "#fff", padding: "80px 0 0", position: "relative", overflow: "hidden" }}>
-          <div className="container">
-            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "60px", alignItems: "flex-end" }}>
-              <FadeIn delay={0} style={{ paddingBottom: 72 }}>
+          {/* Background logo watermark */}
+          <Image
+            src="/hero-bg-logo.jpg"
+            alt=""
+            fill
+            style={{ objectFit: "cover", opacity: 0.30, zIndex: 0 }}
+            aria-hidden="true"
+            priority
+          />
+          <div className="container" style={{ paddingBottom: 60, position: "relative", zIndex: 1 }}>
+            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "60px", alignItems: "stretch" }}>
+              <FadeIn delay={0} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 <div className="pulse-badge" style={{ marginBottom: 20 }}>
                   <span className="tag" style={{ background: "rgba(123,47,190,0.2)", color: "#D4ADFF" }}>
-                    Portland Metro, Oregon
+                    Ormond Beach, Florida
                   </span>
                 </div>
                 <div style={{ marginBottom: 16 }}>
@@ -84,12 +107,12 @@ export default function Page() {
                 </div>
                 <h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.1, marginBottom: 20, letterSpacing: "-0.03em", fontFamily: "'Playfair Display', serif" }}>
                   Your Buyer&apos;s Advocate<br />
-                  <span style={{ color: "#C084FC" }}>in Portland.</span>
+                  <span style={{ color: "#C084FC" }}>in Florida.</span>
                 </h1>
                 <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: 40, maxWidth: 520 }}>
                   21 years of experience. A genuine specialist in first-time buyers and new Americans. Someone in your corner from the first conversation to the day you get your keys.
                 </p>
-                <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                <div className="hero-btns" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
                   <a href="mailto:larisa@firebirdrealty.net" className="btn-purple">
                     Start Your Home Search <ArrowRight size={16} />
                   </a>
@@ -99,33 +122,33 @@ export default function Page() {
                 </div>
               </FadeIn>
 
-              <FadeIn delay={180} direction="none" style={{ alignSelf: "flex-end" }}>
-                <div className="hero-photo-wrap">
-                  <Image
-                    src="/larisa-full.jpg"
-                    alt="Larisa Seibel — Portland Buyer's Agent, Firebird Realty"
-                    width={700}
-                    height={1049}
-                    style={{
-                      display: "block",
-                      width: 420,
-                      height: "auto",
-                      borderRadius: "14px 14px 0 0",
-                      boxShadow: "0 -12px 60px rgba(123,47,190,0.25)",
-                    }}
-                    priority
-                  />
-                </div>
+              <FadeIn delay={180} direction="none" className="hero-photo-wrap" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Image
+                  src="/larisa-hero-desk.jpg"
+                  alt="Larisa Seibel — Florida Buyer's Agent, Firebird Realty"
+                  width={2400}
+                  height={3598}
+                  className="hero-photo-img"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    maxWidth: 357,
+                    height: "auto",
+                    borderRadius: 14,
+                    boxShadow: "0 8px 48px rgba(123,47,190,0.3)",
+                  }}
+                  priority
+                />
               </FadeIn>
             </div>
           </div>
 
           {/* Trust bar */}
-          <div style={{ background: "rgba(0,0,0,0.25)", marginTop: 0 }}>
+          <div style={{ background: "rgba(0,0,0,0.25)", marginTop: 0, position: "relative", zIndex: 1 }}>
             <div className="container">
               <div className="trust-bar">
                 {[
-                  { stat: "21+", label: "Years in Portland Real Estate" },
+                  { stat: "21+", label: "Years in Florida Real Estate" },
                   { stat: "Bilingual", label: "English & Russian" },
                   { stat: "Buyers First", label: "Your advocate, not the seller's" },
                   { stat: "MLS Access", label: "Every active listing, every day" },
@@ -153,7 +176,7 @@ export default function Page() {
             </FadeIn>
             <FadeIn delay={100}>
               <p style={{ fontSize: "1.05rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 44 }}>
-                Larisa has been doing this in Portland since 2005. She knows the neighborhoods, the market rhythms, the inspection red flags, and the negotiation moves that get her buyers into homes — often in competitive situations where other agents come home empty-handed.
+                Larisa has been doing this since 2005. She knows the neighborhoods, the market rhythms, the inspection red flags, and the negotiation moves that get her buyers into homes — often in competitive situations where other agents come home empty-handed.
               </p>
             </FadeIn>
             <div style={{ display: "flex", flexDirection: "column", gap: 14, textAlign: "left" }}>
@@ -170,7 +193,7 @@ export default function Page() {
         </section>
 
         {/* ── HOW IT WORKS ─────────────────────────────────────── */}
-        <section className="section" style={{ background: "var(--cream)", textAlign: "center" }}>
+        <section id="process" className="section" style={{ background: "var(--cream)", textAlign: "center" }}>
           <div className="container">
             <FadeIn>
               <span className="tag" style={{ background: "var(--gold-light)", color: "var(--gold)" }}>The Buying Process</span>
@@ -195,12 +218,12 @@ export default function Page() {
         </section>
 
         {/* ── ABOUT LARISA ─────────────────────────────────────── */}
-        <section className="section" style={{ background: "#fff" }}>
+        <section id="about" className="section" style={{ background: "#fff" }}>
           <div className="container">
             <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
               <FadeIn>
-                <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 20px 60px rgba(30,42,58,0.15)" }}>
-                  <Image src="/larisa-desk.jpg" alt="Larisa Seibel at work" width={480} height={380} style={{ objectFit: "cover", objectPosition: "top center", width: "100%", height: 380, display: "block" }} />
+                <div className="about-photo-glow" style={{ borderRadius: 16, overflow: "hidden", border: "2px solid #7B2FBE" }}>
+                  <Image src="/larisa-about.jpg" alt="Larisa Seibel — Florida Buyer's Agent, Firebird Realty" width={2400} height={1920} className="about-photo" style={{ objectFit: "cover", objectPosition: "center", width: "100%", height: 380, display: "block" }} />
                 </div>
               </FadeIn>
               <FadeIn delay={120}>
@@ -209,7 +232,7 @@ export default function Page() {
                   21 years. Real expertise.<br />Real results.
                 </h2>
                 <p style={{ fontSize: "1rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 18 }}>
-                  Larisa has been helping buyers in the Portland metro since 2005. She came to real estate from an artist's background — and that background shows in the way she sees homes. She notices things most agents miss. She understands how space lives, how light moves through rooms, and what a floor plan tells you about how a family will actually function in a home.
+                  Larisa has been helping buyers in Central Florida since 2005. She came to real estate from an artist's background — and that background shows in the way she sees homes. She notices things most agents miss. She understands how space lives, how light moves through rooms, and what a floor plan tells you about how a family will actually function in a home.
                 </p>
                 <p style={{ fontSize: "1rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 18 }}>
                   She has a particular passion for first-time buyers and new Americans navigating homeownership for the first time. She speaks Russian, and has spent much of her career working with immigrant families and others who needed more than just a transaction — they needed a guide.
@@ -238,14 +261,14 @@ export default function Page() {
                 Home isn&apos;t just square footage and school districts. It&apos;s where life happens. Larisa has bought, designed, and renovated numerous properties over her career — she brings that lived experience to every client relationship.
               </p>
             </FadeIn>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 800, margin: "0 auto" }}>
+            <div className="family-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 800, margin: "0 auto" }}>
               <FadeIn delay={80}>
-                <div style={{ borderRadius: 14, overflow: "hidden", boxShadow: "0 12px 40px rgba(30,42,58,0.12)" }}>
+                <div style={{ borderRadius: 14, overflow: "hidden", border: "2px solid #2a0d3e" }}>
                   <Image src="/larisa-family-1.jpg" alt="Larisa Seibel with family" width={400} height={300} style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
                 </div>
               </FadeIn>
               <FadeIn delay={160}>
-                <div style={{ borderRadius: 14, overflow: "hidden", boxShadow: "0 12px 40px rgba(30,42,58,0.12)" }}>
+                <div style={{ borderRadius: 14, overflow: "hidden", border: "2px solid #2a0d3e" }}>
                   <Image src="/larisa-family-2.jpg" alt="Larisa Seibel with family" width={400} height={300} style={{ objectFit: "cover", width: "100%", height: 280, display: "block" }} />
                 </div>
               </FadeIn>
@@ -291,7 +314,7 @@ export default function Page() {
         </section>
 
         {/* ── CONTACT ─────────────────────────────────────────── */}
-        <section className="section" style={{ background: "#fff", textAlign: "center" }}>
+        <section id="contact" className="section" style={{ background: "#fff", textAlign: "center" }}>
           <div className="container">
             <FadeIn>
               <span className="tag" style={{ background: "var(--purple-light)", color: "var(--purple)" }}>Get in Touch</span>
@@ -304,11 +327,11 @@ export default function Page() {
                 Reach out any time. First conversations are free, low-pressure, and focused on what you actually need.
               </p>
             </FadeIn>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 18, justifyContent: "center", maxWidth: 680, margin: "0 auto" }}>
+            <div className="contact-cards" style={{ display: "flex", flexWrap: "wrap", gap: 18, justifyContent: "center", maxWidth: 680, margin: "0 auto" }}>
               {[
                 { href: "tel:5035474507", label: "(503) 547-4507", sub: "Call or text", icon: Phone },
                 { href: "mailto:larisa@firebirdrealty.net", label: "larisa@firebirdrealty.net", sub: "Email Larisa", icon: Mail },
-                { href: "https://maps.google.com/?q=Sherwood,OR", label: "Portland Metro, OR", sub: "Sherwood & surrounding areas", icon: MapPin, external: true },
+                { href: "https://maps.google.com/?q=Ormond+Beach,FL", label: "Ormond Beach, FL", sub: "Serving Central Florida", icon: MapPin, external: true },
               ].map(({ href, label, sub, icon: Icon, external }, i) => (
                 <FadeIn key={label} delay={i * 80} style={{ flex: "0 1 calc(33% - 18px)", minWidth: 200 }}>
                   <a href={href} className="card" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, textDecoration: "none", cursor: "pointer" }}
@@ -332,7 +355,7 @@ export default function Page() {
           <p style={{ fontWeight: 800, color: "#fff", marginBottom: 6, fontSize: "1.05rem" }}>
             <span style={{ color: "var(--purple)" }}>Firebird</span> Realty
           </p>
-          <p style={{ fontSize: "0.85rem", marginBottom: 6, color: "rgba(255,255,255,0.6)" }}>Larisa Seibel | Licensed Real Estate Agent | Portland Metro, Oregon</p>
+          <p style={{ fontSize: "0.85rem", marginBottom: 6, color: "rgba(255,255,255,0.6)" }}>Larisa Seibel | Licensed Real Estate Agent | Ormond Beach, Florida</p>
           <p style={{ fontSize: "0.82rem", marginBottom: 20, color: "rgba(255,255,255,0.4)" }}>Licensed under Park Place Real Estate</p>
           <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", marginBottom: 20, fontSize: "0.82rem" }}>
             <a href="tel:5035474507" style={{ color: "rgba(255,255,255,0.5)" }}>(503) 547-4507</a>
