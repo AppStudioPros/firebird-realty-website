@@ -64,10 +64,10 @@ export default function AccessibilityWidget() {
         onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.08)')}
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
       >
-        {/* Universal accessibility icon */}
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4891A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="12" cy="4" r="1.5" fill="#D4891A" stroke="none" />
-          <path d="M7 8h10M12 8v4M9 22l3-6 3 6M10 14l-3 4M14 14l3 4" />
+        {/* Universal accessibility person icon */}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4891A" aria-hidden="true">
+          <circle cx="12" cy="3.5" r="2.2" />
+          <path d="M20 8.5H4a.75.75 0 000 1.5h7.25V14l-2.6 5.2a.75.75 0 001.34.67L12 16.5l2.01 3.37a.75.75 0 001.34-.67L12.75 14v-4H20a.75.75 0 000-1.5z" />
         </svg>
       </button>
 
@@ -85,9 +85,9 @@ export default function AccessibilityWidget() {
           {/* Header */}
           <div style={{ background: '#1d092c', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4891A" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <circle cx="12" cy="4" r="1.5" fill="#D4891A" stroke="none" />
-                <path d="M7 8h10M12 8v4M9 22l3-6 3 6M10 14l-3 4M14 14l3 4" />
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D4891A" aria-hidden="true">
+                <circle cx="12" cy="3.5" r="2.2" />
+                <path d="M20 8.5H4a.75.75 0 000 1.5h7.25V14l-2.6 5.2a.75.75 0 001.34.67L12 16.5l2.01 3.37a.75.75 0 001.34-.67L12.75 14v-4H20a.75.75 0 000-1.5z" />
               </svg>
               <span style={{ color: '#fff', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Accessibility</span>
             </div>
