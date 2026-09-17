@@ -1,144 +1,298 @@
-'use client'
+"use client";
+import { useState, useEffect } from "react";
+import { X, Type, Contrast, Eye, RotateCcw } from "lucide-react";
 
-import { useState, useEffect } from 'react'
+// 3D-style accessibility icon matching the blue circle+person style
+function A11yIcon({ size = 28 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* Outer circle with 3D gradient */}
+      <defs>
+        <radialGradient id="circleGrad" cx="38%" cy="32%" r="65%">
+          <stop offset="0%" stopColor="#5bc8f5" />
+          <stop offset="55%" stopColor="#1a9de0" />
+          <stop offset="100%" stopColor="#0d6fab" />
+        </radialGradient>
+        <radialGradient id="figureGrad" cx="40%" cy="30%" r="65%">
+          <stop offset="0%" stopColor="#a8dfff" />
+          <stop offset="100%" stopColor="#3ab5f0" />
+        </radialGradient>
+      </defs>
+      {/* Circle ring */}
+      <circle cx="24" cy="24" r="22" fill="url(#circleGrad)" />
+      <circle cx="24" cy="24" r="22" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
+      {/* Head */}
+      <circle cx="24" cy="13" r="3.5" fill="url(#figureGrad)" />
+      {/* Body */}
+      <rect x="22.5" y="17" width="3" height="9" rx="1.5" fill="url(#figureGrad)" />
+      {/* Arms */}
+      <rect x="13" y="18.5" width="22" height="3" rx="1.5" fill="url(#figureGrad)" />
+      {/* Left leg */}
+      <rect x="22.5" y="25.5" width="3" height="9.5" rx="1.5" transform="rotate(-15 22.5 25.5)" fill="url(#figureGrad)" />
+      {/* Right leg */}
+      <rect x="22.5" y="25.5" width="3" height="9.5" rx="1.5" transform="rotate(15 25.5 25.5)" fill="url(#figureGrad)" />
+      {/* Shine */}
+      <ellipse cx="18" cy="14" rx="4.5" ry="2.5" fill="rgba(255,255,255,0.18)" transform="rotate(-20 18 14)" />
+    </svg>
+  );
+}
 
-const STORAGE_KEY = 'firebird-a11y'
-const defaults = { fontSize: 0, highContrast: false, pauseAnimations: false }
+interface A11ySettings {
+  fontSize: number;      // multiplier: 1 | 1.15 | 1.3 | 1.5
+  contrast: "normal" | "high" | "inverted";
+  underlineLinks: boolean;
+  highlightFocus: boolean;
+  reducedMotion: boolean;
+}
+
+const DEFAULT: A11ySettings = {
+  fontSize: 1,
+  contrast: "normal",
+  underlineLinks: false,
+  highlightFocus: false,
+  reducedMotion: false,
+};
 
 export default function AccessibilityWidget() {
-  const [open, setOpen] = useState(false)
-  const [prefs, setPrefs] = useState(defaults)
+  const [open, setOpen] = useState(false);
+  const [settings, setSettings] = useState<A11ySettings>(DEFAULT);
 
+  // Apply settings to <html>
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.fontSize = `${settings.fontSize * 100}%`;
+
+    // Contrast
+    html.classList.remove("a11y-high-contrast", "a11y-inverted");
+    if (settings.contrast === "high") html.classList.add("a11y-high-contrast");
+    if (settings.contrast === "inverted") html.classList.add("a11y-inverted");
+
+    // Links
+    if (settings.underlineLinks) {
+      html.classList.add("a11y-underline-links");
+    } else {
+      html.classList.remove("a11y-underline-links");
+    }
+
+    // Focus
+    if (settings.highlightFocus) {
+      html.classList.add("a11y-focus-highlight");
+    } else {
+      html.classList.remove("a11y-focus-highlight");
+    }
+
+    // Motion
+    if (settings.reducedMotion) {
+      html.classList.add("a11y-reduce-motion");
+    } else {
+      html.classList.remove("a11y-reduce-motion");
+    }
+
+    // Persist
+    localStorage.setItem("firebird-a11y-settings", JSON.stringify(settings));
+  }, [settings]);
+
+  // Load from storage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      if (saved) setPrefs(JSON.parse(saved))
-    } catch {}
-  }, [])
+      const saved = localStorage.getItem("firebird-a11y-settings");
+      if (saved) setSettings(JSON.parse(saved));
+    } catch {
+      // ignore
+    }
+  }, []);
 
-  useEffect(() => {
-    const root = document.documentElement
-    const sizes: Record<number, string> = { '-1': '92%', 0: '', 1: '106%', 2: '114%', 3: '122%' }
-    root.style.fontSize = sizes[prefs.fontSize] ?? ''
-    prefs.highContrast ? root.setAttribute('data-hc', 'true') : root.removeAttribute('data-hc')
-    prefs.pauseAnimations ? root.setAttribute('data-pa', 'true') : root.removeAttribute('data-pa')
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs))
-  }, [prefs])
+  const reset = () => setSettings(DEFAULT);
 
-  const update = (patch: Partial<typeof defaults>) => setPrefs(p => ({ ...p, ...patch }))
-  const reset = () => setPrefs(defaults)
+  const toggle = <K extends keyof A11ySettings>(key: K, value: A11ySettings[K]) =>
+    setSettings(prev => ({ ...prev, [key]: prev[key] === value ? DEFAULT[key] : value }));
 
-  const btnStyle: React.CSSProperties = {
-    width: 32, height: 32, borderRadius: 8, border: '1px solid #E9D5FF',
-    background: '#F3E8FF', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', fontWeight: 700, color: '#7B2FBE',
-  }
+  const fontSizes = [
+    { label: "A", size: 1, title: "Normal text" },
+    { label: "A+", size: 1.15, title: "Large text" },
+    { label: "A++", size: 1.3, title: "Larger text" },
+    { label: "A+++", size: 1.5, title: "Largest text" },
+  ];
 
-  const toggleStyle = (on: boolean): React.CSSProperties => ({
-    position: 'relative', width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer',
-    background: on ? '#7B2FBE' : '#E9D5FF', transition: 'background 0.2s', flexShrink: 0,
-  })
-
-  const thumbStyle = (on: boolean): React.CSSProperties => ({
-    position: 'absolute', top: 4, left: on ? 24 : 4, width: 16, height: 16,
-    borderRadius: '50%', background: '#fff', transition: 'left 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
-  })
+  const btnStyle = (active: boolean) => ({
+    background: active ? "#7B2FBE" : "rgba(255,255,255,0.08)",
+    border: `1px solid ${active ? "#7B2FBE" : "rgba(255,255,255,0.15)"}`,
+    color: active ? "#fff" : "rgba(255,255,255,0.75)",
+    borderRadius: 6,
+    padding: "8px 12px",
+    cursor: "pointer",
+    fontSize: "0.8rem",
+    fontWeight: 600,
+    transition: "all 0.15s",
+    display: "flex",
+    alignItems: "center",
+    gap: 6,
+  } as React.CSSProperties);
 
   return (
     <>
+      {/* CSS injected for a11y classes */}
       <style>{`
-        [data-hc='true'] { filter: contrast(1.55) brightness(1.05); }
-        [data-pa='true'] * { animation-play-state: paused !important; transition: none !important; }
+        .a11y-high-contrast { filter: contrast(1.5); }
+        .a11y-inverted { filter: invert(1) hue-rotate(180deg); }
+        .a11y-underline-links a { text-decoration: underline !important; }
+        .a11y-focus-highlight *:focus { outline: 3px solid #f59e0b !important; outline-offset: 3px !important; }
+        .a11y-reduce-motion *, .a11y-reduce-motion *::before, .a11y-reduce-motion *::after {
+          animation-duration: 0.001ms !important;
+          transition-duration: 0.001ms !important;
+        }
       `}</style>
 
-      {/* Floating button — sits right above the chat bot (bottom: 96px) */}
+      {/* Floating trigger button */}
       <button
-        onClick={() => setOpen(o => !o)}
-        aria-label={open ? 'Close accessibility options' : 'Open accessibility options'}
+        onClick={() => setOpen(!open)}
+        aria-label="Accessibility options"
         aria-expanded={open}
+        aria-haspopup="dialog"
+        title="Accessibility Options"
         style={{
-          position: 'fixed', bottom: 96, right: 24, zIndex: 199,
-          width: 44, height: 44, borderRadius: '50%', border: 'none', cursor: 'pointer',
-          background: '#1d092c', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 16px rgba(123,47,190,0.3)', transition: 'transform 0.2s',
+          position: "fixed",
+          bottom: 96,
+          right: 24,
+          zIndex: 9998,
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 0,
+          filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.35))",
+          transition: "transform 0.15s, filter 0.15s",
         }}
-        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.08)')}
-        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.1)"; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)"; }}
       >
-        {/* Universal accessibility person icon */}
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4891A" aria-hidden="true">
-          <circle cx="12" cy="3.5" r="2.2" />
-          <path d="M20 8.5H4a.75.75 0 000 1.5h7.25V14l-2.6 5.2a.75.75 0 001.34.67L12 16.5l2.01 3.37a.75.75 0 001.34-.67L12.75 14v-4H20a.75.75 0 000-1.5z" />
-        </svg>
+        <A11yIcon size={52} />
       </button>
 
       {/* Panel */}
       {open && (
         <div
           role="dialog"
-          aria-label="Accessibility options"
+          aria-label="Accessibility settings"
+          aria-modal="true"
           style={{
-            position: 'fixed', bottom: 152, right: 24, zIndex: 199,
-            width: 272, borderRadius: 16, overflow: 'hidden',
-            boxShadow: '0 12px 48px rgba(29,9,44,0.2)', border: '1px solid #E9D5FF', background: '#fff',
+            position: "fixed",
+            bottom: 152,
+            right: 24,
+            zIndex: 9997,
+            width: 300,
+            background: "#1d092c",
+            border: "1px solid rgba(123,47,190,0.4)",
+            borderRadius: 10,
+            boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
+            padding: "20px",
+            color: "#fff",
           }}
         >
           {/* Header */}
-          <div style={{ background: '#1d092c', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="#D4891A" aria-hidden="true">
-                <circle cx="12" cy="3.5" r="2.2" />
-                <path d="M20 8.5H4a.75.75 0 000 1.5h7.25V14l-2.6 5.2a.75.75 0 001.34.67L12 16.5l2.01 3.37a.75.75 0 001.34-.67L12.75 14v-4H20a.75.75 0 000-1.5z" />
-              </svg>
-              <span style={{ color: '#fff', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Accessibility</span>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <A11yIcon size={20} />
+              <span style={{ fontWeight: 700, fontSize: "0.9rem" }}>Accessibility</span>
             </div>
-            <button onClick={() => setOpen(false)} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', display: 'flex', padding: 2 }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
+            <div style={{ display: "flex", gap: 6 }}>
+              <button onClick={reset} title="Reset all settings" style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", cursor: "pointer", padding: 4 }}>
+                <RotateCcw size={14} />
+              </button>
+              <button onClick={() => setOpen(false)} aria-label="Close accessibility panel" style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", cursor: "pointer", padding: 4 }}>
+                <X size={16} />
+              </button>
+            </div>
           </div>
 
-          <div style={{ padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {/* Text Size */}
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
+              <Type size={12} /> Text Size
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 6 }}>
+              {fontSizes.map(({ label, size, title }) => (
+                <button
+                  key={size}
+                  onClick={() => setSettings(prev => ({ ...prev, fontSize: size }))}
+                  title={title}
+                  style={btnStyle(settings.fontSize === size)}
+                  aria-pressed={settings.fontSize === size}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
 
-            {/* Font size */}
-            <div>
-              <p style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#5B4B7A', marginBottom: 10 }}>Text Size</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <button onClick={() => update({ fontSize: Math.max(-1, prefs.fontSize - 1) })} disabled={prefs.fontSize <= -1}
-                  style={{ ...btnStyle, opacity: prefs.fontSize <= -1 ? 0.3 : 1 }} aria-label="Decrease text size">A−</button>
-                <span style={{ flex: 1, textAlign: 'center', fontSize: '0.85rem', fontWeight: 600, color: '#1d092c' }}>
-                  {prefs.fontSize === 0 ? 'Default' : prefs.fontSize > 0 ? `+${prefs.fontSize}` : prefs.fontSize}
+          {/* Contrast */}
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
+              <Contrast size={12} /> Contrast
+            </div>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {(["normal", "high", "inverted"] as const).map(c => (
+                <button
+                  key={c}
+                  onClick={() => toggle("contrast", c)}
+                  style={btnStyle(settings.contrast === c)}
+                  aria-pressed={settings.contrast === c}
+                >
+                  {c.charAt(0).toUpperCase() + c.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Toggles */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4, display: "flex", alignItems: "center", gap: 6 }}>
+              <Eye size={12} /> Options
+            </div>
+            {[
+              { key: "underlineLinks" as const, label: "Underline Links" },
+              { key: "highlightFocus" as const, label: "Highlight Focus" },
+              { key: "reducedMotion" as const, label: "Reduce Motion" },
+            ].map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setSettings(prev => ({ ...prev, [key]: !prev[key] }))}
+                style={{ ...btnStyle(settings[key] as boolean), justifyContent: "space-between" }}
+                aria-pressed={settings[key] as boolean}
+              >
+                <span>{label}</span>
+                <span style={{
+                  width: 32, height: 18, borderRadius: 9,
+                  background: settings[key] ? "#7B2FBE" : "rgba(255,255,255,0.15)",
+                  display: "flex", alignItems: "center",
+                  padding: "0 3px",
+                  transition: "background 0.15s",
+                }}>
+                  <span style={{
+                    width: 12, height: 12, borderRadius: "50%",
+                    background: "#fff",
+                    transform: settings[key] ? "translateX(14px)" : "translateX(0)",
+                    transition: "transform 0.15s",
+                    display: "block",
+                  }} />
                 </span>
-                <button onClick={() => update({ fontSize: Math.min(3, prefs.fontSize + 1) })} disabled={prefs.fontSize >= 3}
-                  style={{ ...btnStyle, opacity: prefs.fontSize >= 3 ? 0.3 : 1 }} aria-label="Increase text size">A+</button>
-              </div>
-            </div>
-
-            {/* High contrast */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <p style={{ fontSize: '0.82rem', fontWeight: 600, color: '#1d092c' }}>High Contrast</p>
-              <button onClick={() => update({ highContrast: !prefs.highContrast })}
-                role="switch" aria-checked={prefs.highContrast} aria-label="Toggle high contrast"
-                style={toggleStyle(prefs.highContrast)}>
-                <span style={thumbStyle(prefs.highContrast)} />
               </button>
-            </div>
+            ))}
+          </div>
 
-            {/* Pause animations */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <p style={{ fontSize: '0.82rem', fontWeight: 600, color: '#1d092c' }}>Pause Animations</p>
-              <button onClick={() => update({ pauseAnimations: !prefs.pauseAnimations })}
-                role="switch" aria-checked={prefs.pauseAnimations} aria-label="Toggle pause animations"
-                style={toggleStyle(prefs.pauseAnimations)}>
-                <span style={thumbStyle(prefs.pauseAnimations)} />
-              </button>
-            </div>
-
-            {/* Reset */}
-            <button onClick={reset} style={{ width: '100%', padding: '9px 0', borderRadius: 8, border: '1px solid #E9D5FF', background: '#FDFAFF', color: '#9B8AC0', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', cursor: 'pointer' }}>
-              Reset to Default
-            </button>
+          {/* Accessibility Statement link */}
+          <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.08)", textAlign: "center" }}>
+            <a href="/accessibility" style={{ color: "#7B2FBE", fontSize: "0.78rem", textDecoration: "underline" }}>
+              Accessibility Statement
+            </a>
           </div>
         </div>
       )}
     </>
-  )
+  );
 }
