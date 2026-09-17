@@ -6,27 +6,65 @@ import NavMenu from "./components/NavMenu";
 
 const personSchema = {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "Larisa Seibel",
-  jobTitle: "Licensed Real Estate Agent — Buyer's Specialist",
-  description: "Licensed Florida buyer's agent based in Ormond Beach with 21+ years of experience. Specializing in first-time homebuyers, new Americans, and buyers who need a real advocate. Russian-speaking.",
-  url: "https://www.firebirdrealty.net",
+  "@type": ["RealEstateAgent", "LocalBusiness"],
+  name: "Larisa Seibel — Firebird Realty",
+  alternateName: "Firebird Realty",
+  jobTitle: "Licensed Florida Buyer's Agent",
+  description: "Larisa Seibel is a licensed Florida buyer's agent with 21+ years of experience based in Ormond Beach. She specializes in first-time homebuyers, new Americans, and Russian-speaking buyers throughout Central Florida. She operates under the Firebird Realty brand through Park Place Real Estate.",
+  url: "https://firebirdrealty.net",
   telephone: "+15035474507",
   email: "larisa@firebirdrealty.net",
-  address: { "@type": "PostalAddress", addressLocality: "Ormond Beach", addressRegion: "FL", addressCountry: "US" },
-  areaServed: { "@type": "State", name: "Central Florida" },
-  knowsLanguage: ["English", "Russian"],
+  image: "https://firebirdrealty.net/larisa-hero-desk.jpg",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ormond Beach",
+    addressRegion: "FL",
+    postalCode: "32174",
+    addressCountry: "US",
+  },
+  areaServed: [
+    { "@type": "City", name: "Ormond Beach", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "Daytona Beach", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "Palm Coast", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "St. Augustine", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "DeLand", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "Deltona", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "Sanford", containedInPlace: { "@type": "State", name: "Florida" } },
+    { "@type": "City", name: "Orlando", containedInPlace: { "@type": "State", name: "Florida" } },
+  ],
+  knowsLanguage: ["en", "ru"],
   memberOf: { "@type": "Organization", name: "Park Place Real Estate" },
+  sameAs: ["https://firebirdrealty.net"],
+  priceRange: "$$",
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed real estate agent with 21+ years of experience based in Ormond Beach, Florida. She operates under the Firebird Realty brand and specializes in working with buyers, first-time homebuyers, and new Americans navigating homeownership for the first time." } },
-    { "@type": "Question", name: "Does Larisa Seibel work with first-time homebuyers?", acceptedAnswer: { "@type": "Answer", text: "Yes. First-time homebuyers are one of Larisa's primary specialties. She walks buyers through every step of the process with patience and clarity, from initial search to closing." } },
-    { "@type": "Question", name: "Does Larisa Seibel speak Russian?", acceptedAnswer: { "@type": "Answer", text: "Yes. Larisa Seibel is bilingual in English and Russian and works with Russian-speaking clients throughout Central Florida." } },
-    { "@type": "Question", name: "What areas does Larisa Seibel cover?", acceptedAnswer: { "@type": "Answer", text: "Larisa serves Central Florida within a 100-mile radius of Ormond Beach, including Daytona Beach, Palm Coast, St. Augustine, DeLand, Deltona, Sanford, Orlando, and surrounding communities." } },
+    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed Florida real estate agent with 21+ years of experience based in Ormond Beach, FL. She operates under the Firebird Realty brand through Park Place Real Estate and represents buyers only throughout Central Florida." } },
+    { "@type": "Question", name: "Does Larisa Seibel work with first-time homebuyers?", acceptedAnswer: { "@type": "Answer", text: "Yes. First-time homebuyers are one of Larisa's primary specialties. She guides buyers through every step of the process — from pre-approval to closing — with patience and clarity." } },
+    { "@type": "Question", name: "Does Larisa Seibel speak Russian?", acceptedAnswer: { "@type": "Answer", text: "Yes. Larisa Seibel is bilingual in English and Russian and works with Russian-speaking buyers throughout Central Florida." } },
+    { "@type": "Question", name: "What areas does Larisa Seibel serve in Florida?", acceptedAnswer: { "@type": "Answer", text: "Larisa serves Central Florida within a 100-mile radius of Ormond Beach, including Daytona Beach, Palm Coast, St. Augustine, DeLand, Deltona, Sanford, Orlando, and surrounding communities." } },
+    { "@type": "Question", name: "Does Larisa Seibel represent sellers?", acceptedAnswer: { "@type": "Answer", text: "No. Larisa works exclusively as a buyer's agent. Her entire focus is representing the buyer's interests, not the seller's." } },
+    { "@type": "Question", name: "How does Larisa Seibel help new Americans buy a home?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel has extensive experience working with immigrant families and new Americans navigating the U.S. homebuying process for the first time. She speaks Russian, understands the unique challenges new Americans face, and provides hands-on guidance from start to close." } },
+    { "@type": "Question", name: "What is Firebird Realty?", acceptedAnswer: { "@type": "Answer", text: "Firebird Realty is the personal real estate brand of Larisa Seibel, a licensed buyer's agent operating under Park Place Real Estate in Ormond Beach, Florida." } },
+    { "@type": "Question", name: "How do I contact Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "You can contact Larisa Seibel by calling or texting (503) 547-4507 or by emailing larisa@firebirdrealty.net. You can also reach her through the contact form at firebirdrealty.net." } },
+  ],
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Buy a Home in Central Florida with Larisa Seibel",
+  description: "A step-by-step guide to the home buying process with Firebird Realty buyer's agent Larisa Seibel in Central Florida.",
+  step: [
+    { "@type": "HowToStep", position: 1, name: "Initial Consultation", text: "Sit down with Larisa to talk through your goals, timeline, and budget. No pressure, no jargon. An honest conversation about what's possible." },
+    { "@type": "HowToStep", position: 2, name: "Get Pre-Approved", text: "Get a mortgage pre-approval letter before touring homes. Larisa connects buyers with trusted lenders who work quickly to make offers competitive." },
+    { "@type": "HowToStep", position: 3, name: "Home Search", text: "Access MLS listings as they come on the market. Tour homes with Larisa, who has an artist's eye for space, layout, and long-term value." },
+    { "@type": "HowToStep", position: 4, name: "Making an Offer", text: "When you find the right home, Larisa writes a strong offer and negotiates on your behalf using 21+ years of negotiation experience." },
+    { "@type": "HowToStep", position: 5, name: "Under Contract", text: "Larisa guides buyers through inspections, contingencies, and appraisals, protecting your interests at every stage." },
+    { "@type": "HowToStep", position: 6, name: "Closing Day", text: "Receive the keys to your new home. Larisa stays involved through closing to make sure nothing falls through the cracks." },
   ],
 };
 
@@ -53,6 +91,7 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       {/* ── NAV ─────────────────────────────────────────────── */}
       <header style={{ background: "#1d092c", padding: "12px 0", position: "sticky", top: 0, zIndex: 100 }}>
