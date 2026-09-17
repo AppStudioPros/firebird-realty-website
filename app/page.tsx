@@ -323,8 +323,12 @@ export default function Page() {
                   Ready to start your search?
                 </h2>
               </HeadingUnderline>
-              <p style={{ color: "var(--text-mid)", maxWidth: 480, margin: "0 auto 48px", lineHeight: 1.8 }}>
+              <p style={{ color: "var(--text-mid)", maxWidth: 480, margin: "0 auto 12px", lineHeight: 1.8 }}>
                 Reach out any time. First conversations are free, low-pressure, and focused on what you actually need.
+              </p>
+              {/* FREC 61J2-10.025: brokerage name adjacent to contact info */}
+              <p style={{ fontSize: "0.82rem", color: "var(--text-light)", marginBottom: 36 }}>
+                Larisa Seibel | Park Place Real Estate | Licensed Florida Real Estate Agent
               </p>
             </FadeIn>
             <div className="contact-cards" style={{ display: "flex", flexWrap: "wrap", gap: 18, justifyContent: "center", maxWidth: 680, margin: "0 auto" }}>
@@ -355,16 +359,44 @@ export default function Page() {
           <p style={{ fontWeight: 800, color: "#fff", marginBottom: 6, fontSize: "1.05rem" }}>
             <span style={{ color: "var(--purple)" }}>Firebird</span> Realty
           </p>
-          <p style={{ fontSize: "0.85rem", marginBottom: 6, color: "rgba(255,255,255,0.6)" }}>Larisa Seibel | Licensed Real Estate Agent | Ormond Beach, Florida</p>
-          <p style={{ fontSize: "0.82rem", marginBottom: 20, color: "rgba(255,255,255,0.4)" }}>Licensed under Park Place Real Estate</p>
-          <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", marginBottom: 20, fontSize: "0.82rem" }}>
+          <p style={{ fontSize: "0.85rem", marginBottom: 4, color: "rgba(255,255,255,0.6)" }}>Larisa Seibel | Licensed Real Estate Agent | Ormond Beach, Florida</p>
+          {/* FREC required: brokerage name adjacent to contact info */}
+          <p style={{ fontSize: "0.82rem", marginBottom: 4, color: "rgba(255,255,255,0.5)" }}>
+            Park Place Real Estate &nbsp;|&nbsp; FL License: [PENDING — CONFIRM WITH CLIENT]
+          </p>
+          <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", marginBottom: 20, marginTop: 12, fontSize: "0.82rem" }}>
             <a href="tel:5035474507" style={{ color: "rgba(255,255,255,0.5)" }}>(503) 547-4507</a>
             <a href="mailto:larisa@firebirdrealty.net" style={{ color: "rgba(255,255,255,0.5)" }}>larisa@firebirdrealty.net</a>
             <a href="https://innovativehomeloan.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--purple)" }}>Innovative Home Loan</a>
           </div>
-          <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.6 }}>
-            Equal Housing Opportunity. All information deemed reliable but not guaranteed.<br />
-            This website does not constitute legal or financial advice.
+
+          {/* Equal Housing Opportunity logo */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 20 }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Equal Housing Opportunity">
+              <rect width="32" height="32" rx="4" fill="rgba(255,255,255,0.08)" />
+              {/* House shape */}
+              <polygon points="16,4 28,14 26,14 26,27 6,27 6,14 4,14" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinejoin="round"/>
+              {/* Door */}
+              <rect x="13" y="19" width="6" height="8" fill="rgba(255,255,255,0.3)" />
+              {/* Equal sign */}
+              <line x1="11" y1="14" x2="21" y2="14" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" />
+              <line x1="11" y1="17" x2="21" y2="17" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", textAlign: "left", lineHeight: 1.4 }}>
+              Equal Housing<br />Opportunity
+            </span>
+          </div>
+
+          {/* Legal page links */}
+          <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap", marginBottom: 16, fontSize: "0.78rem" }}>
+            <a href="/privacy-policy" style={{ color: "rgba(255,255,255,0.35)" }}>Privacy Policy</a>
+            <a href="/terms-of-service" style={{ color: "rgba(255,255,255,0.35)" }}>Terms of Service</a>
+            <a href="/cookie-policy" style={{ color: "rgba(255,255,255,0.35)" }}>Cookie Policy</a>
+          </div>
+
+          <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", lineHeight: 1.6 }}>
+            © {new Date().getFullYear()} Larisa Seibel / Firebird Realty. All information deemed reliable but not guaranteed.<br />
+            This website does not constitute legal or financial advice. Larisa Seibel operates as a buyer&apos;s agent only.
           </p>
         </div>
       </footer>
