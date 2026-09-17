@@ -296,7 +296,7 @@ export default function ChatWidget() {
       {/* Floating orb button */}
       <button onClick={() => setOpen(o => !o)}
         aria-label="Chat with Firebird Realty"
-        style={{ width: 56, height: 56, borderRadius: '50%', background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.18), inset 0 -2px 4px rgba(0,0,0,0.3)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 24px rgba(123,47,190,0.35)', transition: 'transform 0.2s', animation: open ? 'none' : 'firebird-glow 3s ease-in-out infinite' }}
+        style={{ width: 56, height: 56, borderRadius: '50%', background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.18), inset 0 -2px 4px rgba(0,0,0,0.3), 0 4px 24px rgba(123,47,190,0.35)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.2s', animation: open ? 'none' : 'firebird-glow 3s ease-in-out infinite' }}
         onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.08)')}
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
         {open
