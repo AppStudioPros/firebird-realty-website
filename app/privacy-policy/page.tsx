@@ -107,7 +107,7 @@ export default function PrivacyPolicy() {
             <p>If you have questions about this Privacy Policy, contact:</p>
             <div style={{ marginTop: 12, padding: "20px 24px", background: "var(--cream)", borderLeft: "4px solid var(--purple)", borderRadius: "0 8px 8px 0" }}>
               <p><strong>Larisa Seibel — Firebird Realty</strong></p>
-              <p>Licensed under Park Place Real Estate</p>
+              <p>Firebird Realty LLC</p>
               <p>Ormond Beach, Florida</p>
               <p><a href="mailto:larisa@firebirdrealty.net" style={{ color: "var(--purple)" }}>larisa@firebirdrealty.net</a></p>
               <p><a href="tel:5035474507" style={{ color: "var(--purple)" }}>(503) 547-4507</a></p>
@@ -120,7 +120,7 @@ export default function PrivacyPolicy() {
       <footer style={{ background: "var(--deep)", padding: "32px 0", textAlign: "center", marginTop: 64 }}>
         <div className="container">
           <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.82rem" }}>
-            © {new Date().getFullYear()} Larisa Seibel | Firebird Realty | Licensed under Park Place Real Estate | Equal Housing Opportunity
+            © {new Date().getFullYear()} Larisa Seibel | Firebird Realty | Firebird Realty LLC | Equal Housing Opportunity
           </p>
         </div>
       </footer>

@@ -87,7 +87,7 @@ export default function CookiePolicy() {
       <footer style={{ background: "var(--deep)", padding: "32px 0", textAlign: "center", marginTop: 64 }}>
         <div className="container">
           <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.82rem" }}>
-            © {new Date().getFullYear()} Larisa Seibel | Firebird Realty | Licensed under Park Place Real Estate | Equal Housing Opportunity
+            © {new Date().getFullYear()} Larisa Seibel | Firebird Realty | Firebird Realty LLC | Equal Housing Opportunity
           </p>
         </div>
       </footer>

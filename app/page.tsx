@@ -10,7 +10,7 @@ const personSchema = {
   name: "Larisa Seibel — Firebird Realty",
   alternateName: "Firebird Realty",
   jobTitle: "Licensed Florida Buyer's Agent",
-  description: "Larisa Seibel is a licensed Florida buyer's agent with 21+ years of experience based in Ormond Beach. She specializes in first-time homebuyers, new Americans, and Russian-speaking buyers throughout Central Florida. She operates under the Firebird Realty brand through Park Place Real Estate.",
+  description: "Larisa Seibel is a licensed Florida buyer's agent with 21+ years of experience based in Ormond Beach. She specializes in first-time homebuyers, new Americans, and Russian-speaking buyers throughout Central Florida. She operates Firebird Realty LLC, a licensed Florida real estate corporation (License: CQ1068763). Her broker license is BK3563702.",
   url: "https://firebirdrealty.net",
   telephone: "+15035474507",
   email: "larisa@firebirdrealty.net",
@@ -42,13 +42,13 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed Florida real estate agent with 21+ years of experience based in Ormond Beach, FL. She operates under the Firebird Realty brand through Park Place Real Estate and represents buyers only throughout Central Florida." } },
+    { "@type": "Question", name: "Who is Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel is a licensed Florida real estate agent with 21+ years of experience based in Ormond Beach, FL. She operates under the Firebird Realty brand through Firebird Realty LLC, a licensed Florida real estate brokerage, and represents buyers only throughout Central Florida." } },
     { "@type": "Question", name: "Does Larisa Seibel work with first-time homebuyers?", acceptedAnswer: { "@type": "Answer", text: "Yes. First-time homebuyers are one of Larisa's primary specialties. She guides buyers through every step of the process — from pre-approval to closing — with patience and clarity." } },
     { "@type": "Question", name: "Does Larisa Seibel speak Russian?", acceptedAnswer: { "@type": "Answer", text: "Yes. Larisa Seibel is bilingual in English and Russian and works with Russian-speaking buyers throughout Central Florida." } },
     { "@type": "Question", name: "What areas does Larisa Seibel serve in Florida?", acceptedAnswer: { "@type": "Answer", text: "Larisa serves Central Florida within a 100-mile radius of Ormond Beach, including Daytona Beach, Palm Coast, St. Augustine, DeLand, Deltona, Sanford, Orlando, and surrounding communities." } },
     { "@type": "Question", name: "Does Larisa Seibel represent sellers?", acceptedAnswer: { "@type": "Answer", text: "No. Larisa works exclusively as a buyer's agent. Her entire focus is representing the buyer's interests, not the seller's." } },
     { "@type": "Question", name: "How does Larisa Seibel help new Americans buy a home?", acceptedAnswer: { "@type": "Answer", text: "Larisa Seibel has extensive experience working with immigrant families and new Americans navigating the U.S. homebuying process for the first time. She speaks Russian, understands the unique challenges new Americans face, and provides hands-on guidance from start to close." } },
-    { "@type": "Question", name: "What is Firebird Realty?", acceptedAnswer: { "@type": "Answer", text: "Firebird Realty is the personal real estate brand of Larisa Seibel, a licensed buyer's agent operating under Park Place Real Estate in Ormond Beach, Florida." } },
+    { "@type": "Question", name: "What is Firebird Realty?", acceptedAnswer: { "@type": "Answer", text: "Firebird Realty LLC is a licensed Florida real estate corporation (License: CQ1068763) owned and operated by Larisa Seibel, a licensed real estate broker (BK3563702) based in Ormond Beach, Florida." } },
     { "@type": "Question", name: "How do I contact Larisa Seibel?", acceptedAnswer: { "@type": "Answer", text: "You can contact Larisa Seibel by calling or texting (503) 547-4507 or by emailing larisa@firebirdrealty.net. You can also reach her through the contact form at firebirdrealty.net." } },
   ],
 };
@@ -277,7 +277,7 @@ export default function Page() {
                   She has a particular passion for first-time buyers and new Americans navigating homeownership for the first time. She speaks Russian, and has spent much of her career working with immigrant families and others who needed more than just a transaction — they needed a guide.
                 </p>
                 <p style={{ fontSize: "1rem", color: "var(--text-mid)", lineHeight: 1.9, marginBottom: 32 }}>
-                  She operates through Park Place Real Estate under her own brand, Firebird Realty — a name that reflects her approach. Resilient, tenacious, and always moving forward.
+                  She runs Firebird Realty LLC, her own licensed Florida real estate brokerage — a name that reflects her approach. Resilient, tenacious, and always moving forward.
                 </p>
                 <a href="mailto:larisa@firebirdrealty.net" className="btn-purple">
                   Work With Larisa <ArrowRight size={16} />
@@ -367,7 +367,7 @@ export default function Page() {
               </p>
               {/* FREC 61J2-10.025: brokerage name adjacent to contact info */}
               <p style={{ fontSize: "0.82rem", color: "var(--text-light)", marginBottom: 36 }}>
-                Larisa Seibel | Park Place Real Estate | Licensed Florida Real Estate Agent
+                Larisa Seibel | Firebird Realty LLC | Licensed Florida Real Estate Broker
               </p>
             </FadeIn>
             <div className="contact-cards" style={{ display: "flex", flexWrap: "wrap", gap: 18, justifyContent: "center", maxWidth: 680, margin: "0 auto" }}>
