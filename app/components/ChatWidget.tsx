@@ -132,7 +132,8 @@ export default function ChatWidget() {
 
       if (!res.ok || !res.body) {
         setMessages(prev => { const u = [...prev]; u[u.length-1] = { role: 'assistant', content: 'Something went wrong. Use the button below to reach Larisa directly.' }; return u })
-        setLoading(false); return
+        setLoading(false)
+    setTimeout(() => inputRef.current?.focus(), 10); return
       }
 
       const reader = res.body.getReader()
@@ -162,6 +163,7 @@ export default function ChatWidget() {
       setMessages(prev => { const u = [...prev]; u[u.length-1] = { role: 'assistant', content: 'Something went wrong. Use the button below to reach Larisa directly.' }; return u })
     }
     setLoading(false)
+    setTimeout(() => inputRef.current?.focus(), 10)
   }
 
   return (
