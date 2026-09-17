@@ -172,7 +172,7 @@ export default function ChatWidget() {
         <div style={{ width: 340, height: 500, borderRadius: 20, boxShadow: '0 12px 64px rgba(29,9,44,0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', background: '#fff', border: '1px solid #E9D5FF' }}>
 
           {/* Header */}
-          <div style={{ background: '#1d092c', flexShrink: 0 }}>
+          <div style={{ background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', flexShrink: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -185,11 +185,11 @@ export default function ChatWidget() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 {messages.length > 0 && (
-                  <button onClick={clearChat} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', fontSize: '0.78rem', cursor: 'pointer', padding: '4px 8px', borderRadius: 4 }}>
+                  <button onClick={clearChat} style={{ background: 'none', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.4)', fontSize: '0.78rem', cursor: 'pointer', padding: '4px 8px', borderRadius: 4 }}>
                     Clear
                   </button>
                 )}
-                <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 4, display: 'flex' }}>
+                <button onClick={() => setOpen(false)} style={{ background: 'none', border: '1px solid rgba(255,255,255,0.12)', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 4, display: 'flex' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="18 15 12 21 6 15"/></svg>
                 </button>
               </div>
@@ -228,7 +228,7 @@ export default function ChatWidget() {
                   lineHeight: 1.65,
                   maxWidth: '85%',
                   ...(m.role === 'user'
-                    ? { background: '#1d092c', color: '#fff', borderBottomRightRadius: 4 }
+                    ? { background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', color: '#fff', borderBottomRightRadius: 4 }
                     : { background: '#fff', color: '#1d092c', border: '1px solid #E9D5FF', borderBottomLeftRadius: 4 })
                 }}>
                   {m.role === 'user' ? m.content : (
@@ -271,7 +271,7 @@ export default function ChatWidget() {
             {chatEnded ? (
               <div style={{ textAlign: 'center' }}>
                 <p style={{ color: '#9B8AC0', fontSize: '0.78rem', marginBottom: 8 }}>This chat session has ended.</p>
-                <button onClick={clearChat} style={{ background: '#1d092c', color: '#fff', border: 'none', padding: '8px 20px', borderRadius: 8, fontSize: '0.82rem', fontWeight: 700, cursor: 'pointer' }}>
+                <button onClick={clearChat} style={{ background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', color: '#fff', border: '1px solid rgba(255,255,255,0.12)', padding: '8px 20px', borderRadius: 8, fontSize: '0.82rem', fontWeight: 700, cursor: 'pointer' }}>
                   Start a New Chat
                 </button>
               </div>
@@ -284,7 +284,7 @@ export default function ChatWidget() {
                   style={{ flex: 1, fontSize: '0.85rem', padding: '10px 14px', borderRadius: 10, border: '1px solid #E9D5FF', outline: 'none', color: '#1d092c', background: '#FDFAFF', opacity: loading ? 0.5 : 1 }}
                 />
                 <button type="submit" disabled={!input.trim() || loading}
-                  style={{ width: 38, height: 38, borderRadius: 10, border: 'none', background: '#7B2FBE', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0, opacity: (!input.trim() || loading) ? 0.4 : 1 }}>
+                  style={{ width: 38, height: 38, borderRadius: 10, border: '1px solid rgba(255,255,255,0.12)', background: '#7B2FBE', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0, opacity: (!input.trim() || loading) ? 0.4 : 1 }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </button>
               </form>
@@ -296,7 +296,7 @@ export default function ChatWidget() {
       {/* Floating orb button */}
       <button onClick={() => setOpen(o => !o)}
         aria-label="Chat with Firebird Realty"
-        style={{ width: 56, height: 56, borderRadius: '50%', background: '#1d092c', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 24px rgba(123,47,190,0.35)', transition: 'transform 0.2s', animation: open ? 'none' : 'firebird-glow 3s ease-in-out infinite' }}
+        style={{ width: 56, height: 56, borderRadius: '50%', background: 'radial-gradient(circle at 35% 30%, #4a1a6b, #1d092c 55%, #0a0415)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: 'inset 0 1px 3px rgba(255,255,255,0.18), inset 0 -2px 4px rgba(0,0,0,0.3)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 24px rgba(123,47,190,0.35)', transition: 'transform 0.2s', animation: open ? 'none' : 'firebird-glow 3s ease-in-out infinite' }}
         onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.08)')}
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
         {open
