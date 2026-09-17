@@ -20,7 +20,7 @@ function initialNodes(): Node[] {
   ]
 }
 
-function NodeOrb({ className }: { className?: string }) {
+function NodeOrb({ className, style }: { className?: string; style?: React.CSSProperties }) {
   const [nodes, setNodes] = useState<Node[]>(initialNodes)
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
@@ -59,7 +59,7 @@ function NodeOrb({ className }: { className?: string }) {
   const lines: [number, number][] = [[0,1],[1,2],[2,3],[3,0],[0,2],[1,3]]
 
   return (
-    <svg className={className} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <svg className={className} style={style} viewBox="0 0 32 32" fill="none" aria-hidden="true">
       {lines.map(([a, b], i) => (
         <line key={i}
           x1={nodes[a].x} y1={nodes[a].y}
@@ -173,7 +173,7 @@ export default function ChatWidget() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <NodeOrb className="w-6 h-6" style={{ width: 24, height: 24 } as React.CSSProperties} />
+                  <NodeOrb style={{ width: 24, height: 24 }} />
                 </div>
                 <div>
                   <p style={{ color: '#fff', fontSize: '0.88rem', fontWeight: 700, margin: 0, lineHeight: 1.2 }}>Firebird Assistant</p>
@@ -298,7 +298,7 @@ export default function ChatWidget() {
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
         {open
           ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          : <NodeOrb style={{ width: 36, height: 36 } as React.CSSProperties} />
+          : <NodeOrb style={{ width: 36, height: 36 }} />
         }
       </button>
     </div>
